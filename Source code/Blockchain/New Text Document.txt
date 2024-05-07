@@ -1,0 +1,10 @@
+#compile contract
+truffle compile
+
+#Deploy contract
+truffle migrate --network development  --reset --all
+
+
+truffle
+#install truffle
+npm install -g truffle

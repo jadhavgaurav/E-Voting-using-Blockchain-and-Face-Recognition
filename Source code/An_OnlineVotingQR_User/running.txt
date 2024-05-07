@@ -1,0 +1,30 @@
+install xampp
+install nodejs
+install ganache
+
+change the ganache server port as 8545. and restart the server
+
+restore the db evoting
+
+open blockchain folder and install truffle
+npm install -g truffle
+truffle migrate --network development  --reset --all
+
+change the votingsol.json file in contract folder with the newly created file in blockchain\build\contracts\Votingsol.json
+in both admin and user folder.
+
+
+An_OnlineVotingQR_User
+
+1)edit config.js goptions change the newly created contract address
+
+2)change gmail username and password
+
+An_OnlineVotingQR_Admin
+
+1)edit config.js contractaddress with the newly created contract address
+
+2)change the adminaddress to any address from ganache server 
+
+
+

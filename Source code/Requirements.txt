@@ -1,0 +1,9 @@
+python-3.6.3-amd64
+
+xampp-windows-x64-7.4.1-1-VC15-installer
+
+Ganache-2.5.4-win-x64.appx
+
+
+node-v16.13.2-x64.msi
+

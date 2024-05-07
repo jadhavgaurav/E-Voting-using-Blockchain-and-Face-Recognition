@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?><project name="Untitled Gantt Project" company="" webLink="http://" view-date="2023-07-01" view-index="0" gantt-divider-location="507" resource-divider-location="300" version="3.3.3300" locale="en_IN">
+    <description/>
+    <view zooming-state="default:9" id="gantt-chart">
+        <field id="tpd3" name="Name" width="270" order="0"/>
+        <field id="tpd4" name="Begin date" width="85" order="1"/>
+        <field id="tpd5" name="End date" width="136" order="2"/>
+        <option id="filter.completedTasks" value="false"/>
+        <option id="filter.dueTodayTasks" value="false"/>
+        <option id="filter.overdueTasks" value="false"/>
+        <option id="filter.inProgressTodayTasks" value="false"/>
+        <option id="color.recent"><![CDATA[#006666]]></option>
+    </view>
+    <view id="resource-table">
+        <field id="0" name="Name" width="210" order="0"/>
+        <field id="1" name="Default role" width="87" order="1"/>
+    </view>
+    <!-- -->
+    <calendars>
+        <day-types>
+            <day-type id="0"/>
+            <day-type id="1"/>
+            <default-week id="1" name="default" sun="1" mon="0" tue="0" wed="0" thu="0" fri="0" sat="1"/>
+            <only-show-weekends value="false"/>
+            <overriden-day-types/>
+            <days/>
+        </day-types>
+    </calendars>
+    <tasks empty-milestones="true">
+        <taskproperties>
+            <taskproperty id="tpd0" name="type" type="default" valuetype="icon"/>
+            <taskproperty id="tpd1" name="priority" type="default" valuetype="icon"/>
+            <taskproperty id="tpd2" name="info" type="default" valuetype="icon"/>
+            <taskproperty id="tpd3" name="name" type="default" valuetype="text"/>
+            <taskproperty id="tpd4" name="begindate" type="default" valuetype="date"/>
+            <taskproperty id="tpd5" name="enddate" type="default" valuetype="date"/>
+            <taskproperty id="tpd6" name="duration" type="default" valuetype="int"/>
+            <taskproperty id="tpd7" name="completion" type="default" valuetype="int"/>
+            <taskproperty id="tpd8" name="coordinator" type="default" valuetype="text"/>
+            <taskproperty id="tpd9" name="predecessorsr" type="default" valuetype="text"/>
+        </taskproperties>
+        <task id="0" uid="5f5cda90065d46d5b94221683ec33faa" name="3 TOPIC ABSTRACT SUBMISSION" color="#006666" meeting="false" start="2023-07-31" duration="4" complete="0" thirdDate="2024-04-19" thirdDate-constraint="0" expand="true"/>
+        <task id="2" uid="fa133d9a4fab4190b70aaed46651d6a6" name="TOPIC FINALIZED" color="#006666" meeting="false" start="2023-08-03" duration="7" complete="0" thirdDate="2023-07-31" thirdDate-constraint="0" expand="true"/>
+        <task id="3" uid="171355ffa4af47f0a0e74fc361fa21f7" name="INTRODUCTION" color="#006666" meeting="false" start="2023-08-11" duration="6" complete="0" thirdDate="2023-07-27" thirdDate-constraint="0" expand="true"/>
+        <task id="4" uid="8a198ee947da422ab3e6dfc21d1ee860" name="AIM AND OBJECTIVE" color="#006666" meeting="false" start="2023-08-18" duration="3" complete="0" thirdDate="2023-07-31" thirdDate-constraint="0" expand="true"/>
+        <task id="5" uid="382bd2144e1d4ba0a9659ea7a4617d56" name="LITERATURE SURVEY" color="#006666" meeting="false" start="2023-08-23" duration="4" complete="0" thirdDate="2023-07-31" thirdDate-constraint="0" expand="true"/>
+        <task id="6" uid="9d14cb6f46eb4304a89dcc9f759ab622" name="COMPARATIVE ANALYSIS" color="#006666" meeting="false" start="2023-08-29" duration="5" complete="0" thirdDate="2023-07-31" thirdDate-constraint="0" expand="true"/>
+        <task id="7" uid="4ea81ebb14624d1582fc427e8df1b9e5" name="EXISTING SYSTEM" color="#006666" meeting="false" start="2023-09-04" duration="5" complete="0" thirdDate="2023-07-31" thirdDate-constraint="0" expand="true"/>
+        <task id="8" uid="e650ef54308d4f228b368525ee05e5a1" name="PROBLEM STATEMENT" color="#006666" meeting="false" start="2023-09-08" duration="6" complete="0" thirdDate="2023-07-31" thirdDate-constraint="0" expand="true"/>
+        <task id="9" uid="2c031cd5e0f54d1aa0e7c56440f84897" name="SCOPE" color="#006666" meeting="false" start="2023-09-15" duration="3" complete="0" thirdDate="2023-07-31" thirdDate-constraint="0" expand="true"/>
+        <task id="10" uid="14cc437c23f7404e9f6f0f58ac7cffa5" name="PROPOSED SYSTEM ARCHITECTURE" color="#006666" meeting="false" start="2023-09-19" duration="8" complete="0" thirdDate="2023-07-31" thirdDate-constraint="0" expand="true"/>
+        <task id="11" uid="6a792e6f82fb4c8193b39a3d9da60a6e" name="PROPOSED SYSTEM-ALGORITHM" color="#006666" meeting="false" start="2023-09-28" duration="5" complete="0" thirdDate="2023-07-31" thirdDate-constraint="0" expand="true"/>
+        <task id="12" uid="138a88ac9f3b48e287c8094d661803bf" name="DECISION DFD,CLASS,UML,FLOWCHART" color="#006666" meeting="false" start="2023-10-04" duration="7" complete="0" thirdDate="2023-07-31" thirdDate-constraint="0" expand="true"/>
+        <task id="13" uid="c9c672c82dd24e4b908036f8b01fee9f" name="GUI DESIGNING" color="#006666" meeting="false" start="2023-10-12" duration="8" complete="0" thirdDate="2023-08-07" thirdDate-constraint="0" expand="true"/>
+        <task id="14" uid="1a9a994d47cb46d8b156dccd8d4b4a93" name="REPORT PRSENTATION" color="#006666" meeting="false" start="2023-10-23" duration="6" complete="0" thirdDate="2023-08-07" thirdDate-constraint="0" expand="true"/>
+        <task id="15" uid="2c0391d292d648ea94c00ec844577536" name="REPORT FINALIZATION" color="#006666" meeting="false" start="2023-10-30" duration="2" complete="0" thirdDate="2023-08-07" thirdDate-constraint="0" expand="true"/>
+        <task id="16" uid="0ed042f51d2a483388069471569adc9b" name="IEEE PAPER ABSTRACT" color="#006666" meeting="false" start="2024-01-08" duration="5" complete="0" thirdDate="2023-08-07" thirdDate-constraint="0" expand="true"/>
+        <task id="17" uid="dcf3e78bcd7a482791d465fe660444b1" name="REPORT FORMATTING" color="#006666" meeting="false" start="2024-01-12" duration="4" complete="0" thirdDate="2023-08-07" thirdDate-constraint="0" expand="true"/>
+        <task id="18" uid="fccd550c6df145ea83badf3e6b4017d8" name="IEEE PAPER FORMATTING" color="#006666" meeting="false" start="2024-01-17" duration="4" complete="0" thirdDate="2023-08-07" thirdDate-constraint="0" expand="true"/>
+        <task id="19" uid="74088e72fadc4f278c84a7383a310abe" name="REPORT MODIFICATION" color="#006666" meeting="false" start="2024-01-22" duration="1" complete="0" thirdDate="2023-08-07" thirdDate-constraint="0" expand="true"/>
+        <task id="20" uid="f2b0c8fd2073494e97c2efce27f42a0d" name="REPORT ALGORITHM" color="#006666" meeting="false" start="2024-01-22" duration="6" complete="0" thirdDate="2023-08-07" thirdDate-constraint="0" expand="true"/>
+        <task id="21" uid="5a135c7ddc394e9b80fb1cd9ed67a07d" name="FINAL MATHEMATICAL MODEL" color="#006666" meeting="false" start="2024-01-29" duration="2" complete="0" thirdDate="2023-08-07" thirdDate-constraint="0" expand="true"/>
+        <task id="22" uid="fb8449b9f69545bc9c52106eed0024ba" name="IEEE PAPER PLAGARISM" color="#006666" meeting="false" start="2024-01-31" duration="6" complete="0" thirdDate="2023-08-07" thirdDate-constraint="0" expand="true"/>
+        <task id="23" uid="2151120ce3074e2c9452f816105f3554" name="REPORT PROJECT OVERVIEW" color="#006666" meeting="false" start="2024-02-07" duration="2" complete="0" thirdDate="2023-08-07" thirdDate-constraint="0" expand="true"/>
+        <task id="24" uid="6d489d02b2f844279cf4188106c4d134" name="TASK DISTRIBUTION" color="#006666" meeting="false" start="2024-02-08" duration="2" complete="0" thirdDate="2023-08-07" thirdDate-constraint="0" expand="true"/>
+        <task id="25" uid="2be518ba78f64f7b9f1a9946808c5264" name="GUI AND CODING" color="#006666" meeting="false" start="2024-02-09" duration="20" complete="0" thirdDate="2023-08-07" thirdDate-constraint="0" expand="true"/>
+        <task id="26" uid="02cf12640d984447a6c8b650e6d8169d" name="TESTING" color="#006666" meeting="false" start="2024-03-07" duration="10" complete="0" thirdDate="2023-08-07" thirdDate-constraint="0" expand="true"/>
+        <task id="27" uid="248c9f567584483a98daf0251a911f59" name="RESULT AND DISCUSSION" color="#006666" meeting="false" start="2024-03-20" duration="5" complete="0" thirdDate="2023-08-07" thirdDate-constraint="0" expand="true"/>
+        <task id="28" uid="5b97f446022e4ac0ba47b64f829dc7ac" name="REPORT RECHECKING" color="#006666" meeting="false" start="2024-03-26" duration="2" complete="0" thirdDate="2023-08-07" thirdDate-constraint="0" expand="true"/>
+        <task id="29" uid="5ccdb963c8fd44b18d7dcc4630f1fc3e" name="FINALIZED PAPER FOR PUBLISHING" color="#006666" meeting="false" start="2024-03-27" duration="7" complete="0" thirdDate="2023-08-07" thirdDate-constraint="0" expand="true"/>
+        <task id="31" uid="dc81eb46400a416bba53ab35ee1f78ef" name="FINALIZED PAPER FOR PUBLISHING" color="#006666" meeting="false" start="2024-03-27" duration="7" complete="0" thirdDate="2024-03-27" thirdDate-constraint="0" expand="true"/>
+    </tasks>
+    <resources/>
+    <allocations/>
+    <vacations/>
+    <previous/>
+    <roles roleset-name="Default"/>
+</project>
