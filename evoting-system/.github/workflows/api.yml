@@ -1,0 +1,69 @@
+name: API CI
+
+on:
+  push:
+    branches: [main, develop]
+    paths:
+      - "evoting-system/api/**"
+      - "evoting-system/.github/workflows/api.yml"
+  pull_request:
+    branches: [main, develop]
+    paths:
+      - "evoting-system/api/**"
+      - "evoting-system/.github/workflows/api.yml"
+
+jobs:
+  lint-and-test:
+    name: Lint and Test API
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: test
+          POSTGRES_PASSWORD: test
+          POSTGRES_DB: evoting_test
+        ports:
+          - "5432:5432"
+        options: >-
+          --health-cmd "pg_isready -U test -d evoting_test"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    env:
+      DATABASE_URL: postgresql://test:test@127.0.0.1:5432/evoting_test?schema=public
+      TEMPLATE_ENCRYPTION_KEY: test-key-32-bytes-long-for-fernet!!
+
+    defaults:
+      run:
+        working-directory: evoting-system/api
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v4
+        with:
+          version: "latest"
+
+      - name: Set up Python
+        run: uv python install 3.12
+
+      - name: Install dependencies
+        run: uv sync --all-extras
+
+      - name: Run Ruff
+        run: uv run ruff check app tests
+
+      - name: Run Ruff format check
+        run: uv run ruff format --check app tests
+
+      - name: Run mypy
+        run: uv run mypy app
+        continue-on-error: true
+
+      - name: Run tests
+        run: uv run pytest tests -v
