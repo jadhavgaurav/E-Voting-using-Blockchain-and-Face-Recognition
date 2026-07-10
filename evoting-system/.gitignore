@@ -1,8 +1,0 @@
-.env
-*.log
-api/.venv/
-api/__pycache__/
-api/**/__pycache__/
-api/.pytest_cache/
-api/.mypy_cache/
-api/*.egg-info/

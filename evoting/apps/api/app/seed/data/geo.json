@@ -1,0 +1,93 @@
+{
+  "states": [
+    {
+      "name": "Maharashtra",
+      "code": "MH",
+      "parliamentary_constituencies": [
+        { "name": "Mumbai South", "code": "MH-PC-01", "reservation": "General" },
+        { "name": "Mumbai North", "code": "MH-PC-02", "reservation": "General" },
+        { "name": "Pune", "code": "MH-PC-03", "reservation": "General" }
+      ],
+      "districts": [
+        {
+          "name": "Mumbai City",
+          "code": "MH-D-01",
+          "assemblies": [
+            { "name": "Colaba", "code": "MH-AC-001", "pc": "MH-PC-01", "reservation": "General" },
+            { "name": "Worli", "code": "MH-AC-002", "pc": "MH-PC-01", "reservation": "General" }
+          ]
+        },
+        {
+          "name": "Mumbai Suburban",
+          "code": "MH-D-02",
+          "assemblies": [
+            { "name": "Andheri East", "code": "MH-AC-003", "pc": "MH-PC-02", "reservation": "General" },
+            { "name": "Andheri West", "code": "MH-AC-004", "pc": "MH-PC-02", "reservation": "General" }
+          ]
+        },
+        {
+          "name": "Pune",
+          "code": "MH-D-03",
+          "assemblies": [
+            { "name": "Kothrud", "code": "MH-AC-005", "pc": "MH-PC-03", "reservation": "General" },
+            { "name": "Shivajinagar", "code": "MH-AC-006", "pc": "MH-PC-03", "reservation": "General" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Karnataka",
+      "code": "KA",
+      "parliamentary_constituencies": [
+        { "name": "Bangalore South", "code": "KA-PC-01", "reservation": "General" },
+        { "name": "Bangalore North", "code": "KA-PC-02", "reservation": "General" },
+        { "name": "Mysuru", "code": "KA-PC-03", "reservation": "General" }
+      ],
+      "districts": [
+        {
+          "name": "Bengaluru Urban",
+          "code": "KA-D-01",
+          "assemblies": [
+            { "name": "Jayanagar", "code": "KA-AC-001", "pc": "KA-PC-01", "reservation": "General" },
+            { "name": "Basavanagudi", "code": "KA-AC-002", "pc": "KA-PC-01", "reservation": "General" },
+            { "name": "Hebbal", "code": "KA-AC-003", "pc": "KA-PC-02", "reservation": "General" }
+          ]
+        },
+        {
+          "name": "Mysuru",
+          "code": "KA-D-02",
+          "assemblies": [
+            { "name": "Krishnaraja", "code": "KA-AC-004", "pc": "KA-PC-03", "reservation": "General" },
+            { "name": "Chamundeshwari", "code": "KA-AC-005", "pc": "KA-PC-03", "reservation": "General" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Delhi (NCT)",
+      "code": "DL",
+      "parliamentary_constituencies": [
+        { "name": "New Delhi", "code": "DL-PC-01", "reservation": "General" },
+        { "name": "South Delhi", "code": "DL-PC-02", "reservation": "General" }
+      ],
+      "districts": [
+        {
+          "name": "New Delhi",
+          "code": "DL-D-01",
+          "assemblies": [
+            { "name": "Karol Bagh", "code": "DL-AC-001", "pc": "DL-PC-01", "reservation": "SC" },
+            { "name": "R K Puram", "code": "DL-AC-002", "pc": "DL-PC-01", "reservation": "General" }
+          ]
+        },
+        {
+          "name": "South Delhi",
+          "code": "DL-D-02",
+          "assemblies": [
+            { "name": "Greater Kailash", "code": "DL-AC-003", "pc": "DL-PC-02", "reservation": "General" },
+            { "name": "Saket", "code": "DL-AC-004", "pc": "DL-PC-02", "reservation": "General" }
+          ]
+        }
+      ]
+    }
+  ]
+}

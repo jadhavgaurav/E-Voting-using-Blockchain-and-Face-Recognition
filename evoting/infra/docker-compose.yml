@@ -1,0 +1,98 @@
+# Local containerized stack for the E-Voting platform.
+#
+# Blockchain note: the `chain` service runs a Hardhat node. Deploying the contract and
+# injecting EVOTING_CONTRACT_ADDRESS is a one-time step (see infra/deploy/README or the
+# root README "Run the demo"): from packages/contracts run `pnpm deploy:localhost`,
+# copy the printed address into your .env, then (re)start `api`.
+
+name: evoting
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-evoting}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-evoting}
+      POSTGRES_DB: ${POSTGRES_DB:-evoting}
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-evoting}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  chain:
+    image: node:20-alpine
+    working_dir: /contracts
+    command: sh -c "corepack enable && pnpm install && pnpm hardhat node --hostname 0.0.0.0"
+    volumes:
+      - ../packages/contracts:/contracts
+    ports:
+      - "8545:8545"
+
+  biometrics:
+    build:
+      context: ../apps/biometrics
+    environment:
+      INTERNAL_SERVICE_TOKEN: ${INTERNAL_SERVICE_TOKEN:-change-me-internal-token}
+      FACE_EMBEDDER: ${FACE_EMBEDDER:-hash}
+      FACE_MATCH_THRESHOLD: ${FACE_MATCH_THRESHOLD:-0.42}
+    ports:
+      - "8100:8100"
+
+  api:
+    build:
+      context: ../apps/api
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      biometrics:
+        condition: service_started
+    environment:
+      DATABASE_URL: postgresql+asyncpg://${POSTGRES_USER:-evoting}:${POSTGRES_PASSWORD:-evoting}@postgres:5432/${POSTGRES_DB:-evoting}
+      DATABASE_URL_SYNC: postgresql+psycopg://${POSTGRES_USER:-evoting}:${POSTGRES_PASSWORD:-evoting}@postgres:5432/${POSTGRES_DB:-evoting}
+      REDIS_URL: redis://redis:6379/0
+      JWT_SECRET: ${JWT_SECRET:-change-me-in-prod}
+      DATA_ENCRYPTION_KEY: ${DATA_ENCRYPTION_KEY:-change-me-32-bytes-minimum-secret}
+      BIOMETRICS_URL: http://biometrics:8100
+      BIOMETRICS_BACKEND: http
+      INTERNAL_SERVICE_TOKEN: ${INTERNAL_SERVICE_TOKEN:-change-me-internal-token}
+      FACE_MATCH_THRESHOLD: ${FACE_MATCH_THRESHOLD:-0.42}
+      CHAIN_BACKEND: ${CHAIN_BACKEND:-web3}
+      CHAIN_RPC_URL: http://chain:8545
+      CHAIN_ID: "31337"
+      EVOTING_CONTRACT_ADDRESS: ${EVOTING_CONTRACT_ADDRESS:-}
+      FUNDER_PRIVATE_KEY: ${FUNDER_PRIVATE_KEY:-}
+      AUTO_FUND_WEI: ${AUTO_FUND_WEI:-10000000000000000}
+      CORS_ORIGINS: http://localhost:3000
+    ports:
+      - "8000:8000"
+
+  web:
+    build:
+      context: ../apps/web
+      args:
+        NEXT_PUBLIC_API_BASE_URL: http://localhost:8000
+        NEXT_PUBLIC_CHAIN_EXPLORER_URL: ${NEXT_PUBLIC_CHAIN_EXPLORER_URL:-https://sepolia.etherscan.io}
+    depends_on:
+      - api
+    ports:
+      - "3000:3000"
+
+volumes:
+  pgdata:

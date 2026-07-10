@@ -1,0 +1,81 @@
+name: CI
+
+# NOTE: GitHub reads workflows from the repository root's .github/workflows.
+# This monorepo lives in `evoting/`; if you promote `evoting/` to the repo root these
+# run as-is. Otherwise mirror this file to the repo-root .github/workflows and prefix
+# the working-directory paths with `evoting/`.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+defaults:
+  run:
+    working-directory: evoting
+
+jobs:
+  contracts:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+          cache-dependency-path: evoting/pnpm-lock.yaml
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm --filter @evoting/contracts test
+
+  api:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v3
+        with:
+          version: "0.11.x"
+      - run: uv sync --extra dev
+        working-directory: evoting/apps/api
+      - run: uv run ruff check .
+        working-directory: evoting/apps/api
+      - run: uv run mypy app
+        working-directory: evoting/apps/api
+      - run: uv run pytest -q
+        working-directory: evoting/apps/api
+
+  biometrics:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v3
+        with:
+          version: "0.11.x"
+      - run: uv sync --extra dev
+        working-directory: evoting/apps/biometrics
+      - run: uv run ruff check .
+        working-directory: evoting/apps/biometrics
+      - run: uv run mypy app
+        working-directory: evoting/apps/biometrics
+      - run: uv run pytest -q
+        working-directory: evoting/apps/biometrics
+
+  web:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+          cache-dependency-path: evoting/pnpm-lock.yaml
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm --filter @evoting/web lint
+      - run: pnpm --filter @evoting/web build
+        env:
+          NEXT_PUBLIC_API_BASE_URL: http://localhost:8000
